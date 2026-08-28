@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Student Enrollment Form | DATAMEXT COLLEGE OF SAINT ADELINE</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+    rel="stylesheet">
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-links">
+        <a href="news.html">News</a> •
+        <a href="news.html#events">Events</a> •
+        <a href="index.html#uniform">Uniform Reference</a> •
+        <a href="about.html#facilities">Facilities</a> •
+        <a href="academics.html#partners">Industry Partners</a> •
+        <a href="student/login.html" style="color: #fde047; font-weight: 600;">Student Portal</a> •
+        <a href="admin/login.html" style="color: #93c5fd; font-weight: 600;">Admin Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-section">
+        <img src="images/logo.png" alt="DATAMEXT College Logo" class="school-logo-img">
+        <div class="logo-text">
+          <span class="school-name">DATAMEXT COLLEGE OF ST. ADELINE</span>
+          <span class="school-tagline">Quality Education • Global Skills • Character</span>
+        </div>
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">
+        <span></span><span></span><span></span>
+      </label>
+
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT DCSA</a></li>
+        <li><a href="academics.html">ACADEMICS</a></li>
+        <li><a href="admissions.html">ADMISSION</a></li>
+        <li><a href="enroll.html" class="active">ONLINE ENROLLMENT</a></li>
+        <li><a href="news.html">DATAMEX NEWS</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+        <li><a href="admissions.html#branches" class="btn-apply-nav" style="background: var(--dcsa-navy);">Walk-In Admission</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="showcase-section" style="padding: 50px 5%;">
+    <div class="showcase-container">
+      <div class="showcase-content">
+        <span class="section-tag" style="color: #ff8a8a;">Academic Year 2026-2027</span>
+        <h2 style="font-size: 2.2rem;">Online Student <span>Enrollment & Registration</span></h2>
+        <p>Kumpletuhin ang form sa ibaba para mag-register sa Senior High School (100% DepEd Voucher Free Tuition) o College Degree Programs sa DATAMEXT College of Saint Adeline.</p>
+      </div>
+      <div class="showcase-stats">
+        <div class="stat-item">
+          <h3>4</h3>
+          <p>Active Campuses</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>DepEd SHS Voucher Free</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ENROLLMENT FORM SECTION -->
+  <main style="max-width: 1000px; margin: -30px auto 60px auto; padding: 0 20px; position: relative; z-index: 10;">
+    
+    <form id="enrollmentForm" action="#" method="post" class="portal-panel" style="border-top: 5px solid var(--dcsa-red);">
+      
+      <!-- Section 1: Campus & Academic Program -->
+      <div class="portal-panel-header">
+        <h3 class="portal-panel-title">
+          <span style="background: var(--dcsa-navy); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem;">1</span>
+          Campus Branch & Academic Level
+        </h3>
+        <span style="font-size: 0.85rem; color: #64748b;">(Pumili ng branch at program)</span>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="branch">Campus Branch <span class="req">*</span></label>
+          <select id="branch" name="branch" class="form-control" required>
+            <option value="">-- Pumili ng Branch --</option>
+            <option value="Fairview">Fairview Branch (Commonwealth Ave., QC)</option>
+            <option value="Caloocan">Caloocan Branch (J. Teodoro St. cor 10th Ave.)</option>
+            <option value="Valenzuela">Valenzuela Branch (MacArthur Highway, Marulas)</option>
+            <option value="Meycauayan">Meycauayan Branch (Saluysoy, Bulacan)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="level">Academic Level <span class="req">*</span></label>
+          <select id="level" name="level" class="form-control" required>
+            <option value="College">College Degree Program (Undergraduate)</option>
+            <option value="SHS">Senior High School (Grade 11 - DepEd Voucher Free)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="program">Course / Academic Track <span class="req">*</span></label>
+          <select id="program" name="program" class="form-control" required>
+            <option value="">-- Pumili ng Course / Strand --</option>
+            <optgroup label="College Degree Programs">
+              <option value="BSIT - Bachelor of Science in Information Technology">BSIT - Bachelor of Science in Information Technology</option>
+              <option value="BSHM - Bachelor of Science in Hospitality Management">BSHM - Bachelor of Science in Hospitality Management</option>
+              <option value="BSBA - Bachelor of Science in Business Administration">BSBA - Bachelor of Science in Business Administration</option>
+              <option value="Associate in Computer Technology (2-Year ACT)">Associate in Computer Technology (2-Year ACT)</option>
+            </optgroup>
+            <optgroup label="Senior High School Strands">
+              <option value="TVL-ICT - Information and Communications Technology (DepEd Free Voucher)">TVL-ICT - Information and Communications Technology (DepEd Free Voucher)</option>
+              <option value="ABM - Accountancy, Business, and Management">ABM - Accountancy, Business, and Management</option>
+              <option value="STEM - Science, Technology, Engineering, and Mathematics">STEM - Science, Technology, Engineering, and Mathematics</option>
+              <option value="HUMSS - Humanities and Social Sciences">HUMSS - Humanities and Social Sciences</option>
+              <option value="GAS - General Academic Strand">GAS - General Academic Strand</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="entryType">Admission Classification <span class="req">*</span></label>
+          <select id="entryType" name="entryType" class="form-control" required>
+            <option value="Freshman">Incoming Freshman (New Student)</option>
+            <option value="Transferee">Transferee from other school</option>
+            <option value="Returnee">Returnee / Continuing Student</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 2: Student Personal Information -->
+      <div class="portal-panel-header" style="margin-top: 35px;">
+        <h3 class="portal-panel-title">
+          <span style="background: var(--dcsa-navy); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem;">2</span>
+          Personal Information ng Estudyante
+        </h3>
+        <span style="font-size: 0.85rem; color: #64748b;">(Impormasyon ng mag-aaral)</span>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label for="firstName">First Name (Pangalan) <span class="req">*</span></label>
+          <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Hal. Juan" required>
+        </div>
+
+        <div class="form-group">
+          <label for="middleName">Middle Name (Gitnang Pangalan)</label>
+          <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Hal. Santos">
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name (Apelyido) <span class="req">*</span></label>
+          <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Hal. Dela Cruz" required>
+        </div>
+      </div>
+
+      <div class="form-grid-4">
+        <div class="form-group">
+          <label for="suffix">Suffix</label>
+          <select id="suffix" name="suffix" class="form-control">
+            <option value="">None</option>
+            <option value="Jr.">Jr.</option>
+            <option value="Sr.">Sr.</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender (Kasarian) <span class="req">*</span></label>
+          <select id="gender" name="gender" class="form-control" required>
+            <option value="">-- Piliin --</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">Date of Birth <span class="req">*</span></label>
+          <input type="date" id="birthDate" name="birthDate" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age (Edad) <span class="req">*</span></label>
+          <input type="number" id="age" name="age" class="form-control" placeholder="Edad" min="10" max="99" required>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="hal. juan@email.com" required>
+          <small style="color: #64748b; font-size: 0.8rem;">Dito ipapadala ang confirmation at status ng registration.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="contactNo">Active Contact / Mobile No. <span class="req">*</span></label>
+          <input type="tel" id="contactNo" name="contactNo" class="form-control" placeholder="0917 123 4567" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Complete Home Address (Tirahan) <span class="req">*</span></label>
+        <input type="text" id="address" name="address" class="form-control" placeholder="House No., Street, Barangay, City/Municipality, Province" required>
+      </div>
+
+      <!-- Section 3: Guardian & Educational Background -->
+      <div class="portal-panel-header" style="margin-top: 35px;">
+        <h3 class="portal-panel-title">
+          <span style="background: var(--dcsa-navy); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem;">3</span>
+          Parent / Guardian & Educational Background
+        </h3>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label for="guardianName">Parent / Guardian Name <span class="req">*</span></label>
+          <input type="text" id="guardianName" name="guardianName" class="form-control" placeholder="Pangalan ng Magulang / Guardian" required>
+        </div>
+
+        <div class="form-group">
+          <label for="guardianRelation">Relationship <span class="req">*</span></label>
+          <select id="guardianRelation" name="guardianRelation" class="form-control" required>
+            <option value="Mother">Mother</option>
+            <option value="Father">Father</option>
+            <option value="Guardian">Legal Guardian</option>
+            <option value="Sibling">Sibling</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="guardianContact">Guardian Contact Number <span class="req">*</span></label>
+          <input type="tel" id="guardianContact" name="guardianContact" class="form-control" placeholder="0918 765 4321" required>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="lastSchool">Last School Attended <span class="req">*</span></label>
+          <input type="text" id="lastSchool" name="lastSchool" class="form-control" placeholder="Pangalan ng dating paaralan" required>
+        </div>
+
+        <div class="form-group">
+          <label for="voucherBeneficiary">DepEd Voucher Beneficiary / ESC Grantee? <span class="req">*</span></label>
+          <select id="voucherBeneficiary" name="voucherBeneficiary" class="form-control" required>
+            <option value="Yes">Yes (May DepEd Voucher / Free Tuition for SHS)</option>
+            <option value="No">No / Non-Voucher (Regular)</option>
+            <option value="Applying">Applying for Voucher Assistance</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label for="notes">Additional Remarks or Special Inquiries (Optional)</label>
+        <textarea id="notes" name="notes" class="form-control" rows="2" placeholder="Halimbawa: May request sa schedule, credit subjects, o document follow-up..."></textarea>
+      </div>
+
+      <!-- Agreement & Submit -->
+      <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px; margin: 25px 0;">
+        <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.88rem; color: #334155;">
+          <input type="checkbox" id="termsAgree" required style="margin-top: 3px; width: 18px; height: 18px;">
+          <span>Pinatutunayan ko na ang lahat ng impormasyong aking ibinigay sa form na ito ay totoo, tama, at kumpleto alinsunod sa Data Privacy Act of 2012 at patakaran ng <strong>DATAMEXT College of Saint Adeline</strong>.</span>
+        </label>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap;">
+        <button type="reset" class="btn-hero-secondary" style="padding: 12px 25px; border-color: #cbd5e1; color: #64748b;">Clear Form</button>
+        <button type="submit" class="btn-hero-primary" style="padding: 12px 35px; font-size: 1rem; font-weight: 700; background: var(--dcsa-navy); border-color: var(--dcsa-navy);">
+          <span>Submit Enrollment Application</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <!-- ENROLLMENT SUCCESS MODAL -->
+  <div id="successModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 650px; text-align: center;">
+      <div style="width: 70px; height: 70px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 2rem;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 style="color: var(--dcsa-navy); margin-bottom: 5px;">Matagumpay na Naisumite!</h2>
+      <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Nai-save na ang iyong enrollment application sa database ng DATAMEXT College.</p>
+
+      <div style="background: #f8fafc; border: 1px dashed var(--dcsa-navy); border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 25px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
+          <span style="font-size: 0.85rem; color: #64748b; text-transform: uppercase; font-weight: 600;">Application Ref No.</span>
+          <span id="modalRefNo" style="font-size: 1.15rem; font-weight: 800; color: var(--dcsa-red); font-family: monospace;">-</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+          <div><strong style="color: #475569;">Pangalan:</strong> <span id="modalName" style="color: var(--text-dark);">-</span></div>
+          <div><strong style="color: #475569;">Petsa:</strong> <span id="modalDate" style="color: var(--text-dark);">-</span></div>
+          <div><strong style="color: #475569;">Campus Branch:</strong> <span id="modalBranch" style="color: var(--text-dark);">-</span></div>
+          <div><strong style="color: #475569;">Program / Track:</strong> <span id="modalProgram" style="color: var(--text-dark);">-</span></div>
+          <div><strong style="color: #475569;">Contact No.:</strong> <span id="modalContact" style="color: var(--text-dark);">-</span></div>
+          <div><strong style="color: #475569;">Application Status:</strong> <span class="badge badge-pending" style="display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; background: #fef3c7; color: #92400e;">Pending Evaluation</span></div>
+        </div>
+      </div>
+
+      <div style="background: #eef2ff; border-radius: 8px; padding: 12px 15px; margin-bottom: 25px; text-align: left; font-size: 0.85rem; color: #3730a3; display: flex; gap: 10px; align-items: flex-start;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Gamitin ang iyong <strong>Application Ref No.</strong> o <strong>Email</strong> para mag-login sa Student Portal at makita ang assessment, subjects, at clearance.</span>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button type="button" onclick="window.print()" class="btn-hero-secondary" style="padding: 10px 20px; border-color: #cbd5e1;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 5px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Slip
+        </button>
+        <button type="button" id="btnGoToPortal" class="btn-hero-primary" style="padding: 10px 24px; background: var(--dcsa-navy); border-color: var(--dcsa-navy);">
+          Pumunta sa Student Portal &rarr;
+        </button>
+        <button type="button" onclick="document.getElementById('successModal').classList.remove('active'); document.getElementById('enrollmentForm').reset();" class="btn-hero-secondary" style="padding: 10px 20px;">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>About Datamext</h3>
+        <p>Datamext College of St. Adeline is a premier institution offering high-quality education in IT, Hotel & Restaurant Management, Business Administration, and Senior High School.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About DCSA</a>
+          <a href="academics.html">Collegiate Programs</a>
+          <a href="admissions.html">Admissions</a>
+          <a href="admissions.html#branches">Walk-In Admission</a>
+          <a href="student/login.html">Student Portal</a>
+          <a href="admin/login.html">Admin Dashboard</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Campus Branches</h3>
+        <div class="footer-links">
+          <a href="admissions.html#branches">Fairview Branch</a>
+          <a href="admissions.html#branches">Caloocan Branch</a>
+          <a href="admissions.html#branches">Valenzuela Branch</a>
+          <a href="admissions.html#branches">Meycauayan Branch</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Admissions Office</h3>
+        <p>Monday – Friday: 8:00 AM – 5:00 PM</p>
+        <p>Saturday: 8:00 AM – 12:00 PM</p>
+        <p style="margin-top: 10px; font-weight: 600; color: #ff8a8a;">Hotline: 0917 123 4567</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 DATAMEXT COLLEGE OF SAINT ADELINE. All Rights Reserved.</p>
+      <div style="display: flex; gap: 15px;">
+        <a href="student/login.html" style="color: #94a3b8; font-size: 0.82rem;">Student Portal</a>
+        <a href="admin/login.html" style="color: #94a3b8; font-size: 0.82rem;">Admin Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Database & Portal Logic Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal.js"></script>
+  <script>
+    const PROGRAMS = {
+      College: [
+        "BSIT - Bachelor of Science in Information Technology",
+        "BSHM - Bachelor of Science in Hospitality Management",
+        "BSBA - Bachelor of Science in Business Administration",
+        "Associate in Computer Technology (2-Year ACT)"
+      ],
+      SHS: [
+        "TVL-ICT - Information and Communications Technology (DepEd Free Voucher)",
+        "ABM - Accountancy, Business, and Management",
+        "STEM - Science, Technology, Engineering, and Mathematics",
+        "HUMSS - Humanities and Social Sciences",
+        "GAS - General Academic Strand"
+      ]
+    };
+
+    function handleLevelChange() {
+      const levelSelect = document.getElementById("level");
+      if (!levelSelect) return;
+      const level = levelSelect.value;
+      const progSelect = document.getElementById("program");
+      progSelect.innerHTML = "";
+      
+      const list = PROGRAMS[level] || PROGRAMS.College;
+      list.forEach(prog => {
+        const opt = document.createElement("option");
+        opt.value = prog;
+        opt.textContent = prog;
+        progSelect.appendChild(opt);
+      });
+    }
+
+    function calculateAge() {
+      const bdayInput = document.getElementById("birthDate").value;
+      if (!bdayInput) return;
+      const bday = new Date(bdayInput);
+      const today = new Date();
+      let age = today.getFullYear() - bday.getFullYear();
+      const m = today.getMonth() - bday.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < bday.getDate())) {
+        age--;
+      }
+      if (age > 0) {
+        document.getElementById("age").value = age;
+      }
+    }
+
+    document.getElementById("level").addEventListener("change", handleLevelChange);
+    document.getElementById("birthDate").addEventListener("change", calculateAge);
+
+    // Initialize dropdown on load
+    handleLevelChange();
+
+    // Handle Form Submit and Save to Database
+    document.getElementById("enrollmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = {
+        branch: document.getElementById("branch").value,
+        level: document.getElementById("level").value,
+        program: document.getElementById("program").value,
+        entryType: document.getElementById("entryType").value,
+        firstName: document.getElementById("firstName").value.trim(),
+        middleName: document.getElementById("middleName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        suffix: document.getElementById("suffix").value,
+        gender: document.getElementById("gender").value,
+        birthDate: document.getElementById("birthDate").value,
+        age: document.getElementById("age").value,
+        email: document.getElementById("email").value.trim(),
+        contactNo: document.getElementById("contactNo").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        guardianName: document.getElementById("guardianName").value.trim(),
+        guardianRelation: document.getElementById("guardianRelation").value,
+        guardianContact: document.getElementById("guardianContact").value.trim(),
+        lastSchool: document.getElementById("lastSchool").value.trim(),
+        voucherBeneficiary: document.getElementById("voucherBeneficiary").value,
+        notes: document.getElementById("notes").value.trim()
+      };
+
+      // Save to DCSA_DB
+      const savedApplicant = DCSA_DB.addApplicant(formData);
+
+      // Populate Success Modal
+      document.getElementById("modalRefNo").textContent = savedApplicant.id;
+      document.getElementById("modalDate").textContent = savedApplicant.dateApplied;
+      document.getElementById("modalName").textContent = `${savedApplicant.lastName}, ${savedApplicant.firstName} ${savedApplicant.middleName || ''} ${savedApplicant.suffix || ''}`.trim();
+      document.getElementById("modalBranch").textContent = `${savedApplicant.branch} Campus`;
+      document.getElementById("modalProgram").textContent = savedApplicant.program;
+      document.getElementById("modalContact").textContent = savedApplicant.contactNo;
+
+      // Link button to student login with prefilled ref
+      document.getElementById("btnGoToPortal").onclick = function() {
+        localStorage.setItem(DCSA_STORAGE_KEYS.STUDENT_SESSION, JSON.stringify(savedApplicant));
+        window.location.href = "student/portal.html";
+      };
+
+      // Open Modal
+      document.getElementById("successModal").classList.add("active");
+    });
+  </script>
+
+</body>
+
+</html>

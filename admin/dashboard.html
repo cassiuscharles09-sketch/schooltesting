@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Admissions Management | DATAMEXT COLLEGE</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+    rel="stylesheet">
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/db.js"></script>
+</head>
+
+<body style="background: #f1f5f9; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- ADMIN NAV BAR -->
+  <header style="background: var(--dcsa-navy-dark); color: #ffffff; padding: 14px 4%; border-bottom: 3px solid var(--dcsa-red); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; box-shadow: var(--shadow-md);">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="../index.html"><img src="../images/logo.png" alt="DCSA Logo" style="height: 48px; width: auto;"></a>
+      <div>
+        <h1 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: #ffffff; letter-spacing: 0.5px;">DCSA ADMISSIONS ADMIN PORTAL</h1>
+        <span id="dashboardSubTitle" style="font-size: 0.8rem; color: #94a3b8;">Central Campus Registrar & Enrollment Management System</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <div style="text-align: right;">
+        <span id="adminName" style="font-size: 0.88rem; font-weight: 600; color: #f8fafc; display: block;">Administrator</span>
+        <span id="currentDateTime" style="font-size: 0.75rem; color: #94a3b8;">-</span>
+      </div>
+      <a href="../index.html" target="_blank" class="btn-hero-secondary" style="padding: 6px 12px; font-size: 0.8rem; border-color: #475569; color: #cbd5e1;">
+        View Site
+      </a>
+      <button onclick="handleLogout()" class="btn-hero-primary" style="padding: 6px 14px; font-size: 0.8rem; background: var(--dcsa-red); border-color: var(--dcsa-red);">
+        🔒 Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- DASHBOARD BODY CONTAINER -->
+  <div style="max-width: 1400px; width: 100%; margin: 25px auto; padding: 0 20px; flex: 1;">
+    
+    <!-- STATS OVERVIEW CARDS -->
+    <div class="stats-grid">
+      
+      <div class="stat-box navy">
+        <div class="stat-icon-wrapper">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <div class="stat-content">
+          <h4>Total Applicants</h4>
+          <div class="stat-number" id="statTotal">0</div>
+        </div>
+      </div>
+
+      <div class="stat-box gold">
+        <div class="stat-icon-wrapper">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="stat-content">
+          <h4>Pending Review</h4>
+          <div class="stat-number" id="statPending">0</div>
+        </div>
+      </div>
+
+      <div class="stat-box navy">
+        <div class="stat-icon-wrapper">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="stat-content">
+          <h4>Approved for Enrollment</h4>
+          <div class="stat-number" id="statApproved">0</div>
+        </div>
+      </div>
+
+      <div class="stat-box green">
+        <div class="stat-icon-wrapper">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        </div>
+        <div class="stat-content">
+          <h4>Officially Enrolled</h4>
+          <div class="stat-number" id="statEnrolled">0</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN APPLICANTS MANAGEMENT CARD -->
+    <div class="portal-panel">
+      <div class="portal-panel-header" style="border-bottom: none; padding-bottom: 0;">
+        <div>
+          <h2 style="font-size: 1.35rem; color: var(--dcsa-navy); font-weight: 800;">Student Enrollment Submissions</h2>
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 2px;">Listahan ng lahat ng nag-fill up online at walk-in registrants</p>
+        </div>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button onclick="openAddWalkInModal()" class="btn-action enroll" style="padding: 9px 16px; font-size: 0.88rem;">
+            <span>Add Walk-In Student</span>
+          </button>
+          <button onclick="handleExportCSV()" class="btn-action view" style="padding: 9px 16px; font-size: 0.88rem; background: var(--dcsa-navy); color: #fff;">
+            <span>Export to CSV / Excel</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- FILTER & SEARCH TOOLBAR -->
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 15px; margin: 20px 0; display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+        
+        <!-- Search Box -->
+        <div style="flex: 2; min-width: 250px; position: relative;">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search applicant by name, ref no, email, or student ID..." oninput="renderTable()">
+        </div>
+
+        <!-- Campus Branch Filter -->
+        <div style="flex: 1; min-width: 170px;">
+          <select id="branchFilter" class="form-control" onchange="renderTable()">
+            <option value="ALL">All Campus Branches</option>
+            <option value="Fairview">Fairview Branch</option>
+            <option value="Caloocan">Caloocan Branch</option>
+            <option value="Valenzuela">Valenzuela Branch</option>
+            <option value="Meycauayan">Meycauayan Branch</option>
+          </select>
+        </div>
+
+        <!-- Status Filter -->
+        <div style="flex: 1; min-width: 150px;">
+          <select id="statusFilter" class="form-control" onchange="renderTable()">
+            <option value="ALL">All Statuses</option>
+            <option value="Pending">Pending Review</option>
+            <option value="Approved">Approved</option>
+            <option value="Enrolled">Officially Enrolled</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <!-- Academic Level Filter -->
+        <div style="flex: 1; min-width: 140px;">
+          <select id="levelFilter" class="form-control" onchange="renderTable()">
+            <option value="ALL">All Levels</option>
+            <option value="College">College</option>
+            <option value="SHS">Senior High</option>
+          </select>
+        </div>
+
+        <button onclick="resetFilters()" class="btn-action delete" style="padding: 10px 14px; background: #e2e8f0; color: #475569;">
+          Reset
+        </button>
+
+      </div>
+
+      <!-- TABLE VIEW -->
+      <div class="table-responsive">
+        <table class="custom-table" id="applicantsTable">
+          <thead>
+            <tr>
+              <th>Ref No. / ID</th>
+              <th>Applicant Name</th>
+              <th>Program / Strand</th>
+              <th>Branch</th>
+              <th>Contact / Email</th>
+              <th>Date Applied</th>
+              <th>Status</th>
+              <th style="text-align: center;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="applicantsTableBody">
+            <!-- Dynamically populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="noResultsMsg" style="display: none; text-align: center; padding: 40px 20px; color: #64748b;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" style="margin-bottom: 10px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <p style="font-size: 1.05rem; font-weight: 600;">Walang nahanap na record sa kasalukuyang filter.</p>
+        <button onclick="resetFilters()" class="btn-action view" style="margin-top: 10px;">I-reset ang filter</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL: APPLICANT DETAILS & STATUS CHANGER -->
+  <div id="viewModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 800px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="color: var(--dcsa-navy); font-weight: 800; font-size: 1.3rem; margin: 0;">Applicant Full Profile</h3>
+          <span style="font-size: 0.85rem; color: #64748b;" id="modalRefTitle">Ref: -</span>
+        </div>
+        <button class="modal-close" onclick="closeModal('viewModal')">&times;</button>
+      </div>
+
+      <div id="modalProfileContent" style="margin-bottom: 25px;">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Status Updater Box -->
+      <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: var(--radius-sm); padding: 18px; margin-bottom: 20px;">
+        <h4 style="font-size: 0.95rem; color: var(--dcsa-navy); margin-bottom: 12px; font-weight: 700;">Update Application Status & Registrar Notes</h4>
+        
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="updateStatusSelect">Change Status to:</label>
+            <select id="updateStatusSelect" class="form-control" style="font-weight: 600;">
+              <option value="Pending">Pending Review</option>
+              <option value="Approved">Approved (Requirements Verified)</option>
+              <option value="Enrolled">Officially Enrolled (Issue Student ID)</option>
+              <option value="Rejected">Rejected / Incomplete Documents</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="updateNotesInput">Registrar Notes / Remarks:</label>
+            <input type="text" id="updateNotesInput" class="form-control" placeholder="e.g. Form 138 verified, Voucher applied">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px;">
+          <button id="btnSaveStatus" class="btn-action enroll" style="padding: 10px 20px; font-size: 0.9rem;">
+            💾 Save Status & Issue ID
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+        <button onclick="printApplicantCard()" class="btn-hero-secondary" style="padding: 8px 18px; font-size: 0.85rem;">
+          Print Student Summary
+        </button>
+        <button onclick="closeModal('viewModal')" class="btn-action delete" style="padding: 8px 18px; font-size: 0.85rem;">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: ADD WALK-IN STUDENT -->
+  <div id="addModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 750px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="color: var(--dcsa-navy); font-weight: 800; font-size: 1.3rem; margin: 0;">Add Walk-In Applicant</h3>
+          <span style="font-size: 0.85rem; color: #64748b;">Manual direct enrollment encoding by registrar</span>
+        </div>
+        <button class="modal-close" onclick="closeModal('addModal')">&times;</button>
+      </div>
+
+      <form id="addWalkInForm" onsubmit="handleAddWalkIn(event)">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Campus Branch <span class="req">*</span></label>
+            <select id="w_branch" class="form-control" required>
+              <option value="Fairview">Fairview Branch</option>
+              <option value="Caloocan">Caloocan Branch</option>
+              <option value="Valenzuela">Valenzuela Branch</option>
+              <option value="Meycauayan">Meycauayan Branch</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Academic Level <span class="req">*</span></label>
+            <select id="w_level" class="form-control" required onchange="handleWalkInLevelChange()">
+              <option value="College">College Degree Program</option>
+              <option value="SHS">Senior High School (DepEd Voucher)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Course / Strand <span class="req">*</span></label>
+          <select id="w_program" class="form-control" required>
+            <!-- Injected via JS -->
+          </select>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" id="w_firstName" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" id="w_middleName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" id="w_lastName" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label>Gender <span class="req">*</span></label>
+            <select id="w_gender" class="form-control" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Birth Date</label>
+            <input type="date" id="w_birthDate" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Contact No. <span class="req">*</span></label>
+            <input type="tel" id="w_contactNo" class="form-control" required placeholder="0917 123 4567">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="w_email" class="form-control" required placeholder="student@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" id="w_address" class="form-control" placeholder="House No., Street, City">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Initial Status</label>
+            <select id="w_status" class="form-control">
+              <option value="Approved">Approved (Ready to Enroll)</option>
+              <option value="Enrolled">Officially Enrolled</option>
+              <option value="Pending">Pending Review</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>DepEd Voucher Beneficiary?</label>
+            <select id="w_voucher" class="form-control">
+              <option value="Yes">Yes (SHS Voucher Free)</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+          <button type="button" onclick="closeModal('addModal')" class="btn-hero-secondary" style="padding: 10px 18px; border-color: #cbd5e1;">Cancel</button>
+          <button type="submit" class="btn-action enroll" style="padding: 10px 24px; font-size: 0.95rem;">Save & Enroll</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer style="background: #e2e8f0; text-align: center; padding: 15px; color: #64748b; font-size: 0.82rem; margin-top: auto;">
+    DATAMEXT COLLEGE OF SAINT ADELINE &copy; 2026 Admissions & Student Record System.
+  </footer>
+
+  <script src="../js/db.js"></script>
+  <script>
+    // Authentication Check
+    const adminSession = DCSA_DB.getAdminSession();
+    if (!adminSession) {
+      window.location.href = "login.html";
+    }
+
+    const isBranchAdmin = adminSession && adminSession.role === "BranchAdmin";
+    const assignedBranch = isBranchAdmin ? adminSession.branch : "ALL";
+
+    // Setup Admin Identity Display
+    function setupAdminHeader() {
+      const nameElem = document.getElementById("adminName");
+      if (isBranchAdmin) {
+        nameElem.innerHTML = `
+          <span style="color: #fde047; font-weight: 800;">${adminSession.name}</span>
+          <span style="font-size: 0.75rem; background: #e0e7ff; color: var(--dcsa-navy); padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 700;">${adminSession.branch} Only</span>
+        `;
+        document.getElementById("dashboardSubTitle").textContent = `${adminSession.branch} Campus Admissions & Local Enrollment Management`;
+        
+        // Lock branch filter dropdown
+        const bFilter = document.getElementById("branchFilter");
+        bFilter.innerHTML = `<option value="${adminSession.branch}">${adminSession.branch} Campus (Locked)</option>`;
+        bFilter.disabled = true;
+        bFilter.style.backgroundColor = "#e2e8f0";
+        bFilter.style.fontWeight = "700";
+        bFilter.style.color = "var(--dcsa-navy)";
+
+        // Lock walk-in branch select
+        const wBranch = document.getElementById("w_branch");
+        if (wBranch) {
+          wBranch.innerHTML = `<option value="${adminSession.branch}">${adminSession.branch} Campus</option>`;
+          wBranch.disabled = true;
+        }
+      } else {
+        nameElem.innerHTML = `
+          <span style="color: #f8fafc; font-weight: 800;">${adminSession.name}</span>
+          <span style="font-size: 0.75rem; background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 4px; margin-left: 6px; font-weight: 700;">Super Admin (All Campuses)</span>
+        `;
+        document.getElementById("dashboardSubTitle").textContent = `Central Campus Registrar & Multi-Campus Enrollment Management System`;
+      }
+    }
+
+    // Set Live Clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("currentDateTime").textContent = now.toLocaleDateString('en-US', {
+        weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function handleLogout() {
+      if (confirm("Sigurado ka bang nais mong mag-logout sa Admin Portal?")) {
+        localStorage.removeItem('dcsa_admin_session');
+        sessionStorage.removeItem('dcsa_admin_session');
+        if (typeof DCSA_DB !== 'undefined' && DCSA_DB.adminLogout) {
+          DCSA_DB.adminLogout();
+        }
+        window.location.replace("login.html?logged_out=1");
+      }
+    }
+
+    // Active Selected Applicant in Modal
+    let currentSelectedId = null;
+
+    // Get Active Working Dataset based on Admin Scope
+    function getAdminScopedApplicants() {
+      let list = DCSA_DB.getApplicants();
+      if (isBranchAdmin) {
+        list = list.filter(a => a.branch === adminSession.branch);
+      }
+      return list;
+    }
+
+    // Render Stats
+    function updateStats() {
+      const list = getAdminScopedApplicants();
+      document.getElementById("statTotal").textContent = list.length;
+      document.getElementById("statPending").textContent = list.filter(a => a.status === "Pending").length;
+      document.getElementById("statApproved").textContent = list.filter(a => a.status === "Approved").length;
+      document.getElementById("statEnrolled").textContent = list.filter(a => a.status === "Enrolled").length;
+    }
+
+    // Render Applicants Table
+    function renderTable() {
+      let list = getAdminScopedApplicants();
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const branch = isBranchAdmin ? adminSession.branch : document.getElementById("branchFilter").value;
+      const status = document.getElementById("statusFilter").value;
+      const level = document.getElementById("levelFilter").value;
+
+      const filtered = list.filter(a => {
+        // Search query
+        const fullName = `${a.firstName} ${a.middleName || ''} ${a.lastName} ${a.suffix || ''}`.toLowerCase();
+        const matchQ = !q || fullName.includes(q) || 
+                       (a.id && a.id.toLowerCase().includes(q)) || 
+                       (a.studentId && a.studentId.toLowerCase().includes(q)) || 
+                       (a.email && a.email.toLowerCase().includes(q)) ||
+                       (a.program && a.program.toLowerCase().includes(q));
+
+        // Branch filter
+        const matchBranch = (branch === "ALL") || (a.branch === branch);
+
+        // Status filter
+        const matchStatus = (status === "ALL") || (a.status === status);
+
+        // Level filter
+        const matchLevel = (level === "ALL") || (a.level === level);
+
+        return matchQ && matchBranch && matchStatus && matchLevel;
+      });
+
+      const tbody = document.getElementById("applicantsTableBody");
+      const noResults = document.getElementById("noResultsMsg");
+      tbody.innerHTML = "";
+
+      if (filtered.length === 0) {
+        noResults.style.display = "block";
+      } else {
+        noResults.style.display = "none";
+        filtered.forEach(a => {
+          const tr = document.createElement("tr");
+
+          // Status Badge CSS class
+          const statusClass = (a.status || "Pending").toLowerCase();
+
+          tr.innerHTML = `
+            <td>
+              <strong style="color: var(--dcsa-navy); font-size: 0.9rem;">${a.id}</strong>
+              ${a.studentId ? `<br><small style="color: var(--dcsa-green); font-weight: 700;">ID: ${a.studentId}</small>` : ''}
+            </td>
+            <td>
+              <strong style="font-size: 0.95rem; color: #1e293b;">${a.lastName}, ${a.firstName} ${a.middleName ? a.middleName[0] + '.' : ''} ${a.suffix || ''}</strong>
+              <br><small style="color: #64748b;">${a.gender} • ${a.age ? a.age + ' yrs old' : 'N/A'}</small>
+            </td>
+            <td>
+              <span style="font-size: 0.85rem; font-weight: 600; color: var(--dcsa-navy);">${a.program}</span>
+              <br><span style="font-size: 0.75rem; background: #e2e8f0; padding: 2px 6px; border-radius: 4px; color: #475569;">${a.level} - ${a.entryType}</span>
+            </td>
+            <td>
+              <span style="font-weight: 600; color: #334155;">${a.branch}</span>
+            </td>
+            <td>
+              <div style="font-size: 0.85rem;">${a.contactNo || 'N/A'}</div>
+              <div style="font-size: 0.8rem; color: #64748b;">${a.email || 'N/A'}</div>
+            </td>
+            <td>
+              <small style="color: #475569;">${a.dateApplied || 'Recent'}</small>
+            </td>
+            <td>
+              <span class="status-pill ${statusClass}">${a.status}</span>
+            </td>
+            <td style="text-align: center; white-space: nowrap;">
+              <button onclick="openViewModal('${a.id}')" class="btn-action view" title="View Full Details">View</button>
+              ${a.status !== 'Enrolled' ? `<button onclick="quickEnroll('${a.id}')" class="btn-action enroll" title="Officially Enroll">Enroll</button>` : ''}
+              <button onclick="deleteApplicant('${a.id}')" class="btn-action delete" title="Delete record">Delete</button>
+            </td>
+          `;
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      updateStats();
+    }
+
+    function resetFilters() {
+      document.getElementById("searchInput").value = "";
+      if (!isBranchAdmin) {
+        document.getElementById("branchFilter").value = "ALL";
+      }
+      document.getElementById("statusFilter").value = "ALL";
+      document.getElementById("levelFilter").value = "ALL";
+      renderTable();
+    }
+
+    function handleExportCSV() {
+      const activeBranch = isBranchAdmin ? adminSession.branch : document.getElementById("branchFilter").value;
+      DCSA_DB.exportApplicantsToCSV(activeBranch);
+    }
+
+    // View Modal Logic
+    function openViewModal(id) {
+      currentSelectedId = id;
+      const a = DCSA_DB.getApplicantById(id);
+      if (!a) return;
+
+      document.getElementById("modalRefTitle").textContent = `Reference No: ${a.id} ${a.studentId ? ' | Student ID: ' + a.studentId : ''}`;
+      document.getElementById("updateStatusSelect").value = a.status || "Pending";
+      document.getElementById("updateNotesInput").value = a.notes || "";
+
+      const content = document.getElementById("modalProfileContent");
+      content.innerHTML = `
+        <div class="student-id-card" style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 2;">
+            <div>
+              <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #fde047;">Official Registration Record</span>
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin: 4px 0 0 0; color: #fff;">${a.firstName} ${a.middleName || ''} ${a.lastName} ${a.suffix || ''}</h3>
+              <p style="font-size: 0.9rem; color: #e2e8f0; margin-top: 2px;">${a.program}</p>
+            </div>
+            <div style="text-align: right;">
+              <span class="status-pill ${a.status.toLowerCase()}" style="font-size: 0.8rem;">${a.status}</span>
+              <div style="margin-top: 8px; font-size: 0.85rem; font-weight: 700; color: #fde047;">${a.studentId || a.id}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid-2" style="background: #f8fafc; padding: 18px; border-radius: var(--radius-sm); font-size: 0.9rem;">
+          <div>
+            <h4 style="color: var(--dcsa-navy); font-size: 0.95rem; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px;">Personal Information</h4>
+            <p><strong>Gender:</strong> ${a.gender}</p>
+            <p><strong>Birth Date:</strong> ${a.birthDate || 'N/A'} (${a.age ? a.age + ' yrs old' : 'N/A'})</p>
+            <p><strong>Contact No:</strong> ${a.contactNo}</p>
+            <p><strong>Email:</strong> ${a.email}</p>
+            <p><strong>Address:</strong> ${a.address || 'N/A'}</p>
+          </div>
+
+          <div>
+            <h4 style="color: var(--dcsa-navy); font-size: 0.95rem; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px;">Academic & Guardian Info</h4>
+            <p><strong>Campus Branch:</strong> ${a.branch} Campus</p>
+            <p><strong>Academic Level:</strong> ${a.level} (${a.entryType})</p>
+            <p><strong>DepEd Voucher:</strong> ${a.voucherBeneficiary || 'No'}</p>
+            <p><strong>Previous School:</strong> ${a.lastSchool || 'N/A'}</p>
+            <p><strong>Guardian:</strong> ${a.guardianName || 'N/A'} (${a.guardianRelation || 'Parent'}) - ${a.guardianContact || 'N/A'}</p>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("btnSaveStatus").onclick = function() {
+        const newStatus = document.getElementById("updateStatusSelect").value;
+        const newNotes = document.getElementById("updateNotesInput").value;
+        DCSA_DB.updateApplicantStatus(currentSelectedId, newStatus, newNotes);
+        alert(`Applicant ${a.id} status successfully updated to "${newStatus}"!`);
+        openViewModal(currentSelectedId);
+        renderTable();
+      };
+
+      document.getElementById("viewModal").classList.add("active");
+    }
+
+    function quickEnroll(id) {
+      if (confirm(`Nais mo bang opisyal na i-enroll ang estudyante (${id}) at mag-generate ng Student ID?`)) {
+        const updated = DCSA_DB.updateApplicantStatus(id, "Enrolled", "Officially Enrolled via Quick Action");
+        alert(`Success! Na-enroll na si ${updated.firstName} ${updated.lastName}. Student ID: ${updated.studentId}`);
+        renderTable();
+      }
+    }
+
+    function deleteApplicant(id) {
+      if (confirm(`Sigurado ka bang nais mong burahin ang record ni ${id}? Hindi na ito maibabalik.`)) {
+        DCSA_DB.deleteApplicant(id);
+        renderTable();
+      }
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove("active");
+    }
+
+    function printApplicantCard() {
+      window.print();
+    }
+
+    // Walk-In Modal Logic
+    const WALK_IN_PROGRAMS = {
+      College: [
+        "BSIT - Bachelor of Science in Information Technology",
+        "BSHM - Bachelor of Science in Hospitality Management",
+        "BSBA - Bachelor of Science in Business Administration",
+        "Associate in Computer Technology (2-Year ACT)"
+      ],
+      SHS: [
+        "TVL-ICT - Information and Communications Technology (DepEd Free Voucher)",
+        "ABM - Accountancy, Business, and Management",
+        "STEM - Science, Technology, Engineering, and Mathematics",
+        "HUMSS - Humanities and Social Sciences",
+        "GAS - General Academic Strand"
+      ]
+    };
+
+    function handleWalkInLevelChange() {
+      const level = document.getElementById("w_level").value;
+      const select = document.getElementById("w_program");
+      select.innerHTML = "";
+      const list = WALK_IN_PROGRAMS[level] || WALK_IN_PROGRAMS.College;
+      list.forEach(p => {
+        const opt = document.createElement("option");
+        opt.value = p;
+        opt.textContent = p;
+        select.appendChild(opt);
+      });
+    }
+
+    function openAddWalkInModal() {
+      handleWalkInLevelChange();
+      document.getElementById("addModal").classList.add("active");
+    }
+
+    function handleAddWalkIn(e) {
+      e.preventDefault();
+      const newEntry = {
+        branch: document.getElementById("w_branch").value,
+        level: document.getElementById("w_level").value,
+        program: document.getElementById("w_program").value,
+        firstName: document.getElementById("w_firstName").value.trim(),
+        middleName: document.getElementById("w_middleName").value.trim(),
+        lastName: document.getElementById("w_lastName").value.trim(),
+        gender: document.getElementById("w_gender").value,
+        birthDate: document.getElementById("w_birthDate").value,
+        contactNo: document.getElementById("w_contactNo").value.trim(),
+        email: document.getElementById("w_email").value.trim(),
+        address: document.getElementById("w_address").value.trim(),
+        voucherBeneficiary: document.getElementById("w_voucher").value,
+        entryType: "Freshman",
+        notes: "Walk-In Registrar Registration"
+      };
+
+      const saved = DCSA_DB.addApplicant(newEntry);
+      const initialStatus = document.getElementById("w_status").value;
+      if (initialStatus !== "Pending") {
+        DCSA_DB.updateApplicantStatus(saved.id, initialStatus);
+      }
+
+      alert(`Walk-In Student successfully saved! Ref No: ${saved.id}`);
+      closeModal("addModal");
+      document.getElementById("addWalkInForm").reset();
+      renderTable();
+    }
+
+    // Initial Load & Real-time Cloud Sync Listener
+    setupAdminHeader();
+    renderTable();
+
+    // Re-render automatically when data arrives from Supabase Cloud
+    window.addEventListener('dcsa_data_synced', function() {
+      renderTable();
+    });
+
+    // Auto-poll Supabase cloud every 20 seconds for new submissions
+    setInterval(function() {
+      if (typeof DCSA_DB !== 'undefined' && DCSA_DB.syncFromSupabase) {
+        DCSA_DB.syncFromSupabase();
+      }
+    }, 20000);
+  </script>
+
+</body>
+</html>
