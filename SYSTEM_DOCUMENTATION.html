@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DCSA Web-Based Information System - System Documentation (Pure HTML5 & CSS3)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      margin: 20mm 15mm;
+      size: A4;
+    }
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      line-height: 1.65;
+      margin: 0;
+      padding: 30px;
+      background: #f8fafc;
+    }
+    .doc-page {
+      max-width: 850px;
+      margin: 0 auto 30px auto;
+      background: #ffffff;
+      padding: 50px 60px;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      page-break-after: always;
+      box-sizing: border-box;
+    }
+    .title-page {
+      text-align: center;
+      min-height: 850px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+    h1, h2, h3, h4 {
+      color: #0f172a;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    h1 { font-size: 1.85rem; text-transform: uppercase; margin-bottom: 8px; }
+    h2 { font-size: 1.3rem; color: #8b2626; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin-top: 25px; margin-bottom: 12px; }
+    h3 { font-size: 1.05rem; color: #1e3a8a; margin-top: 18px; margin-bottom: 8px; }
+    h4 { font-size: 0.95rem; color: #0f172a; margin-top: 14px; margin-bottom: 6px; }
+    p, li { font-size: 0.92rem; color: #334155; }
+    ul, ol { padding-left: 22px; margin-top: 6px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    .meta-box {
+      margin: 35px 0;
+      padding: 22px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border-left: 5px solid #1e3a8a;
+      text-align: left;
+      display: inline-block;
+      width: 85%;
+      box-sizing: border-box;
+    }
+    .meta-item { margin-bottom: 6px; font-size: 0.92rem; }
+    .meta-item strong { color: #0f172a; display: inline-block; width: 140px; }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 14px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      overflow-x: auto;
+      line-height: 1.4;
+      margin: 12px 0;
+    }
+    .badge-pill {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 9px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .feature-card-doc {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #8b2626;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+    }
+    .feature-card-doc h4 {
+      margin: 0 0 4px 0;
+      color: #8b2626;
+    }
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .doc-page { box-shadow: none; border: none; padding: 0; margin: 0; }
+      .title-page { min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="doc-page title-page">
+    <div style="font-size: 1.05rem; font-weight: 700; color: #64748b; letter-spacing: 2px; text-transform: uppercase;">
+      Web System Technologies
+    </div>
+    <div style="font-size: 1.45rem; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase;">
+      System Documentation
+    </div>
+    <div>
+      <span class="badge-pill">100% Pure HTML5 & CSS3 Architecture (No Database)</span>
+    </div>
+
+    <div style="margin: 45px 0 25px 0;">
+      <div style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Project Title:</div>
+      <h1 style="color: #8b2626; font-size: 1.85rem; margin-top: 8px;">
+        DATAMEX College of Saint Adeline (DCSA)<br>Web-Based Information System
+      </h1>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+      <div class="meta-box">
+        <div class="meta-item"><strong>Prepared by:</strong></div>
+        <div style="font-weight: 600; color: #8b2626; margin-left: 20px;">Leader: Trajano, Cassius Charles M.</div>
+        <div style="margin-left: 20px; color: #334155;">Baculo, Russel P.</div>
+        <div style="margin-left: 20px; color: #334155;">Loresca, Danevie Adlao</div>
+        <div style="margin-left: 20px; color: #334155;">Quillano, Jayric</div>
+        <div style="margin-left: 20px; color: #334155;">Ragos, Pamela</div>
+        <div style="margin-left: 20px; color: #334155;">Valle, Catherine</div>
+        <hr style="border: 0; border-top: 1px solid #cbd5e1; margin: 12px 0;">
+        <div class="meta-item"><strong>Course / Year:</strong> BSIT 2nd Year</div>
+        <div class="meta-item"><strong>Subject:</strong> Web System Technologies</div>
+        <div class="meta-item"><strong>Instructor:</strong> Emman Cumayagay</div>
+        <div class="meta-item"><strong>Academic Year:</strong> 2026–2027</div>
+      </div>
+    </div>
+    <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 20px;">
+      Web System Technologies — System Documentation
+    </div>
+  </div>
+
+  <!-- PAGE 2: SECTIONS 1 & 2 -->
+  <div class="doc-page">
+    <h2>1. INTRODUCTION</h2>
+    <p>
+      The rapid transformation of modern educational technology has highlighted the critical importance of accessible, centralized, and transparent digital information systems in academic institutions. Developed as a major requirement for the course Web System Technologies, the <strong>DATAMEX College of Saint Adeline (DCSA) Web-Based Information System</strong> is an institutional public showcase platform designed to serve prospective students, parents, transferees, and campus visitors across its four official branches located in Fairview, Caloocan, Valenzuela, and Meycauayan. The platform provides a digital gateway that showcases Commission on Higher Education (CHED) accredited collegiate degrees, Department of Education (DepEd) recognized Senior High School strands, state-of-the-art laboratory facilities, and official school uniform dress code guidelines in one unified environment.
+    </p>
+    <p>
+      Prior to the conceptualization and deployment of this web system, prospective applicants and parents encountered persistent challenges in obtaining accurate, timely, and centralized school information. Essential details regarding academic curricula, branch landmarks, office operating schedules, and documentary admission prerequisites were dispersed across fragmented physical bulletin boards and informal social media announcements. This lack of a structured information channel frequently resulted in unprepared walk-in applicants arriving without mandatory credentials, such as Form 138 report cards, Certificates of Good Moral Character, and PSA Birth Certificates. The DCSA Web-Based Information System was therefore developed to eliminate multi-branch ambiguity, reduce administrative bottlenecks at campus registrar desks, and empower families with clear, 24/7 accessible pre-enrollment guidelines and 100% DepEd Voucher subsidy information before they visit any campus in person.
+    </p>
+    <p>
+      Built exclusively using standards-compliant <strong>Semantic HTML5</strong> and modern <strong>CSS3</strong>, the platform achieves high-performance responsiveness, intuitive navigation, and visual aesthetics without relying on complex backend frameworks or dynamic database engines (<strong>100% Pure HTML5 & CSS3</strong>). HTML5 establishes a structured document hierarchy with built-in client-side form validation for visitor inquiries, while CSS3 leverages Flexbox, Grid, CSS Custom Properties, and media queries to ensure smooth visual rendering across desktop monitors, tablets, and smartphones. Furthermore, the implementation of pure CSS interactive techniques, including the checkbox toggle hack for mobile navigation drawers and seamless section jumping, guarantees maximum security, zero loading latency, and consistent cross-browser compatibility across all modern web browsers.
+    </p>
+
+    <h2>2. PROJECT OVERVIEW</h2>
+    <h3>2.1 System Name</h3>
+    <p><strong>DATAMEX College of Saint Adeline (DCSA) Web-Based Information System</strong></p>
+
+    <h3>2.2 System Description</h3>
+    <p>
+      The DATAMEX College of Saint Adeline (DCSA) Web-Based Information System is a responsive web platform designed to serve as the institution's primary informational hub for prospective students, parents, and visitors. The system provides structured academic details, showcasing Senior High School strands, College degree programs, campus facilities, and industry accreditations across all four DCSA campuses. It assists prospective enrollees by presenting clear walk-in admission guidelines, documentary requirement checklists, branch locations, and DepEd voucher subsidy information during official school office hours from 8:00 AM to 5:00 PM. Furthermore, the system serves as a centralized source for official uniform dress code references, facility overviews, and direct inquiry channels. Designed for seamless access on both desktop and mobile devices, the web system improves information transparency and enables applicants to prepare all required documents before personally visiting their chosen campus branch.
+    </p>
+
+    <h3>2.3 Problem Statement</h3>
+    <p>
+      Prior to the implementation of the system, DATAMEX College of Saint Adeline (DCSA) faced difficulties in delivering centralized information to prospective students, parents, and visitors across its four campus branches. Prospective applicants frequently arrived at the school unprepared or missing essential admission documents, resulting in delayed processing and unnecessary repeated walk-in visits. Furthermore, the lack of a unified digital platform created confusion regarding specific branch locations, active contact numbers, academic program offerings, and the coverage of the 100% DepEd Senior High School Voucher subsidy. Important institutional guidelines, uniform dress code standards, and office schedules were also scattered across informal channels and physical bulletin boards, making them difficult to access reliably. Consequently, front-desk staff spent substantial office hours manually answering repetitive basic inquiries instead of focusing on processing on-site walk-in applications and student records.
+    </p>
+
+    <h3>2.4 Proposed Solution</h3>
+    <p>
+      To address the identified challenges, the DATAMEX College of Saint Adeline (DCSA) Web-Based Information System was developed to serve as a centralized digital platform that delivers complete and accessible institutional information. The system directly resolves the issue of unprepared walk-in applicants by presenting comprehensive admission guidelines, documentary requirement checklists, and official office hours from 8:00 AM to 5:00 PM, ensuring students prepare all necessary records prior to their campus visit. It eliminates multi-branch confusion by organizing verified contact directories and location details for all four campuses, while clearly showcasing available Senior High School strands, College degree programs, and 100% DepEd Voucher subsidy coverage. Additionally, the platform centralizes facility overviews and student uniform dress code references in one verified digital location. Through its built-in inquiry channel and accessible information structure, the web system significantly reduces repetitive front-desk questions, allowing campus personnel to process on-site walk-in admissions more efficiently.
+    </p>
+  </div>
+
+  <!-- PAGE 3: SECTIONS 3, 4, 5 & 6 -->
+  <div class="doc-page">
+    <h2>3. PROJECT GOAL AND OBJECTIVES</h2>
+    <h3>3.1 Project Goal</h3>
+    <p>
+      The main goal of this project is to develop a responsive, web-based Information and Public Showcase System for Datamex College of Saint Adeline (DCSA) using pure HTML5 and CSS3 that provides students, parents, prospective applicants, and visitors with easy, centralized access to vital institutional information, such as academic programs, walk-in admission guidelines, campus directories, facilities, and uniform standards across all four DCSA branches.
+    </p>
+
+    <h3>3.2 Specific Objectives</h3>
+    <p>The project is designed to accomplish the following specific objectives:</p>
+    <ul>
+      <li>To develop a web-based informational platform that presents the complete curricula and academic career pathways for Commission on Higher Education (CHED) accredited collegiate programs (BSIT, BSHM, BSBA, ACT) and Department of Education (DepEd) recognized Senior High School strands (STEM, ABM, HUMSS, TVL-ICT, TVL-HE).</li>
+      <li>To provide users with comprehensive walk-in admission guidelines and documentary checklists, specifically detailing the submission of Form 138 report cards, Good Moral certificates, PSA birth certificates, and 100% DepEd Voucher subsidy benefits.</li>
+      <li>To implement pure HTML5 and CSS3 interactive features, such as a responsive mobile navigation drawer utilizing the CSS checkbox toggle technique, smooth section jumping, and modern 16:9 alternating widescreen facility layouts without relying on JavaScript or external script libraries.</li>
+      <li>To provide appropriate HTML5 form input validation for client-side public inquiries by applying required attributes and specific input types across the contact interface.</li>
+      <li>To organize multi-campus branch information by consolidating verified addresses, nearby landmarks, direct Google Maps navigation links, and official Facebook page buttons for the Fairview, Caloocan, Valenzuela, and Meycauayan campuses.</li>
+      <li>To evaluate and test the overall system performance, ensuring visual consistency, rapid page load speed, cross-browser compatibility, and seamless responsiveness across diverse screen resolutions.</li>
+    </ul>
+
+    <h2>4. PROJECT SCOPE</h2>
+    <p>The system encompasses a comprehensive 5-page public viewing platform covering institutional information for Datamex College of Saint Adeline:</p>
+    <ul>
+      <li><strong>Functions Available:</strong> Multi-page site navigation, mobile hamburger drawer, quick-portal jumps, branch Google Maps links, client-side inquiry form, visual uniform showcase, and 16:9 facility split showcases.</li>
+      <li><strong>Users Who Can Access:</strong> Prospective SHS/College students, parents, transferees, visitors, and campus staff.</li>
+      <li><strong>Data Handled:</strong> Program descriptions, course accreditations, founding history, mission/vision/values, walk-in checklists, branch addresses, landmarks, hotlines, and inquiry message fields.</li>
+      <li><strong>Pages/Modules:</strong> <code>index.html</code> (Home), <code>about.html</code> (About DCSA), <code>academics.html</code> (Academics), <code>admissions.html</code> (Admissions & Branches), and <code>contact.html</code> (Contact Us).</li>
+      <li><strong>HTML/CSS Functions Implemented:</strong> Semantic tags, CSS Flexbox/Grid, CSS Variables, CSS Checkbox Hack for mobile nav, Media Queries, 16:9 aspect-ratio formatting, and smooth scrolling.</li>
+    </ul>
+    <h3>4.1 Included Features:</h3>
+    <ul>
+      <li>Hero Banner with Core Stats (15+ Years Excellence, 100% Voucher, 4 Campuses).</li>
+      <li>Official Student Uniform Reference and Campus Dress Code Policy.</li>
+      <li>Widescreen Facilities Showcase (16:9 Alternating Split Layout: Computer Labs, Culinary Kitchen, Library).</li>
+      <li>4-Campus Branch Locator with Infographic Map, Landmarks, and Google Maps links.</li>
+      <li>Walk-In Admission Documentary Requirements Checklist.</li>
+      <li>Public Inquiry Form with HTML5 Field Validations.</li>
+    </ul>
+
+    <h2>5. PROJECT LIMITATIONS</h2>
+    <ul>
+      <li><strong>Web Browser Environment:</strong> Intended for standard web browsers only (Google Chrome, Firefox, Edge, Safari, Opera); does not include a native mobile app.</li>
+      <li><strong>Pure Viewing Platform:</strong> Does not process dynamic online payments, tuition checkout, or digital receipts.</li>
+      <li><strong>No Database or User Accounts:</strong> Zero SQL database engines, zero login portals, zero student/faculty dashboards.</li>
+      <li><strong>Walk-In Admissions Processing:</strong> Final document evaluation and physical enrollment are conducted in-person at campus registrar offices.</li>
+      <li><strong>Internet Connection:</strong> Required for loading Google Web Fonts (`Poppins`) and external Google Maps/Facebook redirection links.</li>
+    </ul>
+
+    <h2>6. TARGET USERS</h2>
+    <ol>
+      <li><strong>Prospective College & Senior High School Students:</strong> Discovering accredited programs, SHS tracks, and voucher subsidy benefits.</li>
+      <li><strong>Parents and Guardians:</strong> Evaluating campus facilities, locations, tuition coverage, and enrollment requirements.</li>
+      <li><strong>Transferees & Returning Students:</strong> Checking program prerequisites, branch options, and office hours.</li>
+      <li><strong>General Public & Visitors:</strong> Finding official campus hotlines, email directories, and location landmarks.</li>
+      <li><strong>DCSA Admissions & Front-Desk Personnel:</strong> Referencing standardized school details during walk-in assistance.</li>
+    </ol>
+  </div>
+
+  <!-- PAGE 4: SECTIONS 7, 8 & 9 -->
+  <div class="doc-page">
+    <h2>7. SYSTEM FEATURES</h2>
+    <div class="feature-card-doc">
+      <h4>Feature 1: Responsive Multi-Page Navigation Header & Top Bar</h4>
+      <p>Displays school logo, tagline, top info strip, and navigation links. Converts into a JS-free CSS hamburger drawer on mobile viewports.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 2: Official Uniform & Student Standards Reference</h4>
+      <p>Presents an official photo guide and dress code policy for male/female uniforms, neckties, footwear, and ID lanyards.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 3: 16:9 Alternating Split Facilities Showcase</h4>
+      <p>Showcases Air-Conditioned Computer Labs, Commercial Culinary Kitchen, and E-Library in an alternating left/right layout with 16:9 aspect ratios.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 4: Academic Program Curricula Catalog</h4>
+      <p>Details CHED degree programs (BSIT, BSHM, BSBA, ACT) and DepEd SHS strands with badges and curricula highlights.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 5: 4-Campus Branch Locator & Navigation Links</h4>
+      <p>Features an infographic map and branch cards for Fairview, Caloocan, Valenzuela, and Meycauayan with Google Maps and Facebook links.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 6: Walk-In Admissions Requirement Checklist</h4>
+      <p>Outlines original and photocopy requirements (Form 138, Good Moral, PSA Birth Certificate) for incoming enrollees.</p>
+    </div>
+    <div class="feature-card-doc">
+      <h4>Feature 7: Direct Public Inquiry Form</h4>
+      <p>HTML5-validated contact form with Full Name, Email, Subject, and Message fields for instant visitor inquiries.</p>
+    </div>
+
+    <h2>8. SYSTEM REQUIREMENTS</h2>
+    <h3>8.1 Hardware Requirements</h3>
+    <ul>
+      <li><strong>Device:</strong> Desktop Computer, Laptop, Tablet, or Smartphone.</li>
+      <li><strong>Processor:</strong> Dual-Core 1.5 GHz or higher (Intel Core i3/i5/i7, AMD Ryzen, Apple Silicon, ARM).</li>
+      <li><strong>RAM:</strong> Minimum 2 GB (4 GB or higher recommended).</li>
+      <li><strong>Storage:</strong> Minimum 50 MB free disk space for source files and images.</li>
+      <li><strong>Display:</strong> Supports 320x480 (mobile) up to 1920x1080+ (Full HD desktop).</li>
+    </ul>
+
+    <h3>8.2 Software Requirements</h3>
+    <ul>
+      <li><strong>Operating System:</strong> Windows 10/11, macOS, Linux, Android, or iOS.</li>
+      <li><strong>Web Browser:</strong> Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, or Opera.</li>
+      <li><strong>Code Editor (Development):</strong> Visual Studio Code, Sublime Text, or Antigravity IDE.</li>
+      <li><strong>Backend / Database:</strong> None required (<strong>0% Backend, No SQL Database</strong>).</li>
+    </ul>
+
+    <h2>9. SYSTEM DESIGN</h2>
+    <h3>9.1 System Flowchart</h3>
+    <pre>
++-------------------------------------------------------------------------------+
+|                               START (User Visits Site)                         |
++-------------------------------------------------------------------------------+
+                                        |
+                                        v
+                       +---------------------------------+
+                       |     HOMEPAGE (index.html)       |
+                       |  - Hero Banner & Stats          |
+                       |  - Quick Navigation Portals     |
+                       |  - Uniform Reference Guide      |
+                       |  - Academic Offerings Summary   |
+                       +---------------------------------+
+                                        |
+      +------------------+--------------+--------------+------------------+
+      |                  |                             |                  |
+      v                  v                             v                  v
++--------------+  +---------------+             +--------------+  +---------------+
+|   ABOUT US   |  |   ACADEMICS   |             |  ADMISSIONS  |  |  CONTACT US   |
+| (about.html) |  | (academics.html)           | (admissions.html)| (contact.html)|
+| - History    |  | - BSIT / BSHM |             | - 4 Branches |  | - Hotlines    |
+| - 16:9 Split |  | - BSBA / ACT  |             | - Maps/Links |  | - Office Hours|
+|   Facilities |  | - SHS Strands |             | - Checklist  |  | - Inquiry Form|
+| - Philosophy |  | - Accredited  |             | - Voucher Info| | - Submission  |
++--------------+  +---------------+             +--------------+  +---------------+
+      |                  |                             |                  |
+      +------------------+--------------+--------------+------------------+
+                                        |
+                                        v
++-------------------------------------------------------------------------------+
+|      USER COMPLETES GOAL (Prepared for Walk-In Visit / Direct Inquiry Sent)   |
++-------------------------------------------------------------------------------+
+    </pre>
+
+    <h3>9.2 System Flow</h3>
+    <ol>
+      <li><strong>Landing & Exploration:</strong> The user accesses <code>index.html</code> to view school credentials, core statistics, and official uniform dress code guidelines.</li>
+      <li><strong>Program & Facility Review:</strong> The user navigates to <code>about.html</code> to explore 16:9 widescreen facilities and school philosophy, or opens <code>academics.html</code> to inspect degree curricula.</li>
+      <li><strong>Admissions Preparation:</strong> The user visits <code>admissions.html</code> to find their nearest branch, view landmarks, open Google Maps, and prepare required admission documents.</li>
+      <li><strong>Inquiry Submission:</strong> The user accesses <code>contact.html</code> to view hotlines, office hours, or submit inquiries via the contact form.</li>
+    </ol>
+  </div>
+
+  <!-- PAGE 5: SECTIONS 10 & 11 -->
+  <div class="doc-page">
+    <h2>10. USER INTERFACE DESIGN</h2>
+    <h3>10.1 Homepage (<code>index.html</code>)</h3>
+    <p><strong>Purpose:</strong> Serves as the primary welcoming gateway providing institutional credentials, uniform policy, and quick navigation.</p>
+    <p><strong>Available Controls:</strong> Header navigation links, Mobile hamburger checkbox toggle, Hero action CTA button (<em>"Walk-In Campus Branches & Info"</em>), 4 Quick Portal cards (Admissions, Academics, Facilities, Contact), and Footer links.</p>
+
+    <h3>10.2 About Us Page (<code>about.html</code>)</h3>
+    <p><strong>Purpose:</strong> Educates visitors on the founding story (Est. 2010), showcases modern campus facilities, and presents the core values.</p>
+    <p><strong>Available Controls:</strong> Top bar navigation, 16:9 alternating widescreen facility showcases (Computer Labs, Culinary Kitchen, E-Library), Mission/Vision/Values cards, and unified footer.</p>
+
+    <h3>10.3 Academics Page (<code>academics.html</code>)</h3>
+    <p><strong>Purpose:</strong> Catalogs all CHED-accredited collegiate degree programs, diploma courses, and DepEd-recognized Senior High School tracks.</p>
+    <p><strong>Available Controls:</strong> Program cards with colored category badges (Flagship, Hospitality, Business, Diploma), track descriptions, and campus inquiry buttons.</p>
+
+    <h3>10.4 Admissions & Branches Page (<code>admissions.html</code>)</h3>
+    <p><strong>Purpose:</strong> Guides prospective applicants with complete branch locations, navigational landmarks, and walk-in requirement checklists.</p>
+    <p><strong>Available Controls:</strong> 4-Campus infographic map, individual campus branch cards with Google Maps and Facebook redirection buttons, and 3-card documentary checklist.</p>
+
+    <h3>10.5 Contact Us Page (<code>contact.html</code>)</h3>
+    <p><strong>Purpose:</strong> Provides direct communication channels, office locations, hotlines, operating hours, and an interactive messaging form.</p>
+    <p><strong>Available Controls:</strong> Interactive HTML5 form with field validations (<code>Full Name</code>, <code>Email</code>, <code>Subject</code>, <code>Message</code>, <code>Submit</code>), clickable phone/email links, and office hours cards.</p>
+
+    <h2>11. CONCLUSION</h2>
+    <ul>
+      <li><strong>Summary of Completed Project:</strong> The <strong>DATAMEX College of Saint Adeline (DCSA) Web-Based Information System</strong> was successfully conceptualized, structured, and deployed as a responsive, pure HTML5 and CSS3 informational showcase. The project centralizes critical academic, admission, campus branch, uniform policy, and facility details into an intuitive, lightweight 5-page digital hub.</li>
+      <li><strong>Achievement of Objectives:</strong> All formulated project objectives were achieved in full. The platform eliminates information fragmentation across the 4 campus branches, provides an accurate documentary checklist for walk-in enrollees, and delivers responsive multi-device accessibility with zero server-side scripting or database vulnerabilities.</li>
+      <li><strong>What Students Learned:</strong> Through the execution of this project, the student developers gained mastery in designing structured semantic HTML5 layouts, implementing advanced CSS Flexbox/Grid modules, utilizing pure CSS interactivity (Checkbox Hack), and ensuring consistent visual branding across multi-page web applications.</li>
+      <li><strong>How HTML/CSS Contributed:</strong> HTML5 provided a clean, semantic document model that is accessible and search-engine friendly, while CSS3 enabled rich visual aesthetics, custom color variables, fluid grid alignments, and smooth transitions with zero loading latency and full cross-browser compatibility.</li>
+      <li><strong>Possible Future Improvements:</strong> Future enhancements may explore integrating a 360-degree virtual campus tour, downloadable PDF admission guides, and a multi-language toggle (English / Filipino).</li>
+    </ul>
+
+    <h2>PROJECT FILE DIRECTORY</h2>
+    <pre>
+d:\DSCA NO DATABASE\
+│
+├── index.html                    # Homepage & Overview (Hero, Uniform, Programs)
+├── about.html                    # About DCSA, Facilities (16:9 Split), Mission/Vision
+├── academics.html                # Collegiate Programs & Senior High Strands
+├── admissions.html               # 4 Campus Branches, Maps, Walk-in Checklist
+├── contact.html                  # Contact Info, Directory, Inquiry Form
+├── style.css                     # Master CSS3 Stylesheet
+│
+├── SYSTEM_DOCUMENTATION.html     # Printable Academic HTML Documentation with Cover Page
+├── SYSTEM_DOCUMENTATION.md       # Markdown Documentation for Word/Docs
+│
+├── images/                       # Logo, campus branch map, facility photos
+└── pic/                          # Student uniform reference photo
+    </pre>
+  </div>
+
+</body>
+</html>
