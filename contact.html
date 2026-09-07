@@ -4,27 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | DATAMEX COLLEGE OF SAINT ADELINE</title>
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-  <!-- External Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=3.0">
+  <link rel="stylesheet" href="style.css?v=3.1">
 </head>
 <body>
 
-  <!-- TOP BAR -->
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="top-bar-container">
       <div class="top-bar-links">
         <a href="index.html#uniform">Uniform Reference</a> •
+        <a href="index.html#safety">Campus Safety & Welfare</a> •
         <a href="about.html#facilities">Facilities</a> •
         <a href="admissions.html#branches" style="color: #fde047; font-weight: 700;">Campus Branches</a>
       </div>
     </div>
   </div>
 
-  <!-- NAVIGATION HEADER -->
+  <!-- Header -->
   <header class="main-header">
     <div class="nav-container">
       <a href="index.html" class="logo-section">
@@ -51,7 +52,7 @@
     </div>
   </header>
 
-  <!-- CONTACT HERO -->
+  <!-- Contact Hero -->
   <section class="showcase-section" style="padding: 70px 5%;">
     <div class="showcase-container">
       <div class="showcase-content">
@@ -62,11 +63,13 @@
     </div>
   </section>
 
-  <!-- CONTACT FORM & DETAILS GRID -->
+  <!-- Contact Section -->
   <section class="contact-section">
     <div class="contact-grid">
+      
       <!-- Contact Info Cards -->
       <div class="contact-info-list">
+        <!-- Address -->
         <div class="contact-info-card">
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -77,6 +80,7 @@
           </div>
         </div>
 
+        <!-- Phone -->
         <div class="contact-info-card">
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -87,6 +91,7 @@
           </div>
         </div>
 
+        <!-- Email -->
         <div class="contact-info-card">
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -97,6 +102,7 @@
           </div>
         </div>
 
+        <!-- Office Hours -->
         <div class="contact-info-card">
           <div class="c-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -108,33 +114,38 @@
         </div>
       </div>
 
-      <!-- Contact Message Form -->
+      <!-- Message Form -->
       <div style="background: white; padding: 35px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--border-color);">
         <h3 style="color: var(--navy); margin-bottom: 20px; font-weight: 700;">Send Us a Direct Message</h3>
-        <form action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you for contacting Datamex College of Saint Adeline. Your inquiry has been received.'); this.reset();">
+        
+        <form action="#" method="post">
           <div style="margin-bottom: 15px;">
             <label style="font-size: 0.88rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 5px;">Your Full Name *</label>
             <input type="text" required placeholder="Juan Dela Cruz" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1;">
           </div>
+          
           <div style="margin-bottom: 15px;">
             <label style="font-size: 0.88rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 5px;">Email Address *</label>
             <input type="email" required placeholder="juan@gmail.com" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1;">
           </div>
+          
           <div style="margin-bottom: 15px;">
             <label style="font-size: 0.88rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 5px;">Subject / Inquiry Topic *</label>
             <input type="text" required placeholder="Inquiry regarding BSIT Tuition & Vouchers" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1;">
           </div>
+          
           <div style="margin-bottom: 20px;">
             <label style="font-size: 0.88rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 5px;">Your Message *</label>
             <textarea required rows="4" placeholder="Write your message here..." style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit;"></textarea>
           </div>
+          
           <button type="submit" class="btn-hero-primary" style="width: 100%; justify-content: center; border: none; cursor: pointer;">Send Message Now &rarr;</button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-grid">
       <div class="footer-col">
@@ -149,6 +160,7 @@
           <a href="about.html">About DCSA</a>
           <a href="academics.html">Collegiate Programs</a>
           <a href="index.html#uniform">Uniform Reference</a>
+          <a href="index.html#safety">Campus Safety & Welfare</a>
           <a href="admissions.html">Admissions & Branches</a>
           <a href="contact.html">Contact Us</a>
         </div>
