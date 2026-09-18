@@ -1,0 +1,206 @@
+/* ========================================================
+   DATAMEX COLLEGE OF SAINT ADELINE (DCSA)
+   About Page Stylesheet (about.css)
+   ======================================================== */
+
+@import url('style.css');
+
+/* ========================================================
+   1. ABOUT SHOWCASE STATS & MEDIA
+   ======================================================== */
+.showcase-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stat-item h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ff8a8a;
+}
+
+.stat-item p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+.showcase-video-box {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.showcase-video-box img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.play-button-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 30, 61, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.play-button-overlay:hover {
+  background: rgba(27, 30, 61, 0.2);
+}
+
+/* ========================================================
+   2. CAMPUS FACILITIES SPLIT SECTION
+   ======================================================== */
+.facility-split-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.facility-split-content {
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+}
+
+.facility-split-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #8B2626;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.facility-split-subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8B2626;
+  margin-bottom: 22px;
+}
+
+.facility-split-text {
+  font-size: 0.96rem;
+  color: #334155;
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto 24px auto;
+}
+
+.facility-split-highlight {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #8B2626;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+
+.facility-split-btn {
+  display: inline-block;
+  background: var(--dcsa-navy);
+  color: #ffffff;
+  padding: 13px 36px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.facility-split-btn:hover {
+  background: var(--dcsa-red);
+}
+
+.facility-split-media {
+  background: #8F3A3A;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.facility-split-img-box {
+  width: 90%;
+  max-width: 540px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+}
+
+.facility-split-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.facility-split-img-box:hover img {
+  transform: scale(1.05);
+}
+
+.facility-split-section.navy-bg .facility-split-media {
+  background: var(--dcsa-navy);
+}
+
+.facility-split-section.green-bg .facility-split-media {
+  background: #1e3a29;
+}
+
+/* ========================================================
+   3. ABOUT RESPONSIVE BREAKPOINTS
+   ======================================================== */
+@media (max-width: 960px) {
+  .facility-split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-split-content {
+    padding: 55px 6%;
+  }
+
+  .facility-split-title {
+    font-size: 2.1rem;
+  }
+
+  .facility-split-media {
+    padding: 45px 20px;
+    min-height: 340px;
+  }
+
+  .facility-split-img-box {
+    width: 95%;
+    max-width: 480px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

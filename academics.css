@@ -1,0 +1,79 @@
+/* ========================================================
+   DATAMEX COLLEGE OF SAINT ADELINE (DCSA)
+   Academics Page Stylesheet (academics.css)
+   ======================================================== */
+
+@import url('style.css');
+
+/* ========================================================
+   1. HERO NOTICE CARD (ACCREDITATIONS BANNER)
+   ======================================================== */
+.hero-notice-card {
+  background: var(--dcsa-navy-dark);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 4px solid var(--dcsa-red);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.notice-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 12px;
+}
+
+.notice-header h3 {
+  font-size: 1.15rem;
+  color: #ff8a8a;
+  font-weight: 700;
+}
+
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.notice-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+}
+
+.notice-badge {
+  background: var(--dcsa-red);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ========================================================
+   2. ACADEMICS PROGRAM SECTIONS (#COLLEGE & #SHS)
+   ======================================================== */
+#college.programs-section {
+  background-color: var(--bg-white);
+}
+
+#shs.news-events-section {
+  background-color: var(--bg-light);
+  padding: 85px 5%;
+}
+
+#shs .programs-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.academics-curriculum-link {
+  margin-top: auto;
+  padding-top: 10px;
+}

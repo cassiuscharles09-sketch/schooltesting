@@ -1,0 +1,83 @@
+/* ========================================================
+   DATAMEX COLLEGE OF SAINT ADELINE (DCSA)
+   Admissions Page Stylesheet (admissions.css)
+   ======================================================== */
+
+@import url('style.css');
+
+/* ========================================================
+   1. CAMPUS BRANCHES SECTION & MAPS
+   ======================================================== */
+.branches-map-wrap {
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--dcsa-red);
+}
+
+.branches-map-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.branch-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.branch-btn-fb {
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+.branch-btn-maps {
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--dcsa-navy);
+  border-color: var(--dcsa-navy);
+}
+
+/* ========================================================
+   2. DEPED VOUCHER PROGRAM & STEPS
+   ======================================================== */
+.voucher-section {
+  background: #f8fafc;
+  padding: 70px 5%;
+}
+
+.procedure-section {
+  padding: 70px 5%;
+}
+
+.checklist-section {
+  padding: 70px 5%;
+  background: #ffffff;
+}
+
+.step-card {
+  transition: var(--transition);
+}
+
+.step-card:hover {
+  border-color: var(--dcsa-navy);
+}
+
+/* ========================================================
+   3. ADMISSIONS RESPONSIVE BREAKPOINTS
+   ======================================================== */
+@media (max-width: 768px) {
+  .branches-map-wrap {
+    padding: 10px;
+    margin-bottom: 35px;
+  }
+}
