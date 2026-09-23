@@ -9,16 +9,16 @@
    1. VARIABLES & DESIGN TOKENS
    ======================================================== */
 :root {
-  --dcsa-navy: #2b2e5a;        
-  --dcsa-navy-dark: #1b1e3d;   
-  --dcsa-navy-light: #3e437c;  
-  --dcsa-red: #8c1d1d;         
-  --dcsa-red-hover: #6e1414;   
-  --dcsa-red-light: #fbeae9;   
-  --dcsa-green: #1b5e20;       
-  --dcsa-green-hover: #134617; 
-  --dcsa-green-light: #e8f5e9; 
-  --dcsa-gold: #e67e22;        
+  --dcsa-navy: #2b2e5a;
+  --dcsa-navy-dark: #1b1e3d;
+  --dcsa-navy-light: #3e437c;
+  --dcsa-red: #8c1d1d;
+  --dcsa-red-hover: #6e1414;
+  --dcsa-red-light: #fbeae9;
+  --dcsa-green: #1b5e20;
+  --dcsa-green-hover: #134617;
+  --dcsa-green-light: #e8f5e9;
+  --dcsa-gold: #e67e22;
 
   --text-dark: #1e293b;
   --text-muted: #64748b;
@@ -32,7 +32,7 @@
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
-  
+
   --transition: all 0.25s ease;
 }
 
@@ -40,13 +40,13 @@
    2. RESET & BASE STYLES
    ======================================================== */
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html {
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
   font-size: 16px;
 }
 
@@ -55,17 +55,17 @@ body {
   color: var(--text-dark);
   background-color: var(--bg-light);
   line-height: 1.6;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
   color: inherit;
-  transition: var(--transition); 
+  transition: var(--transition);
 }
 
 ul {
-  list-style: none; 
+  list-style: none;
 }
 
 /* ========================================================
@@ -123,13 +123,13 @@ ul {
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  transition: var(--transition); 
+  transition: var(--transition);
 }
 
 .top-bar-social a:hover {
   background: var(--dcsa-red);
   color: #ffffff;
-  transform: translateY(-2px); 
+  transform: translateY(-2px);
 }
 
 .top-bar-social svg {
@@ -142,7 +142,7 @@ ul {
    4. NAVIGATION BAR & HEADER
    ======================================================== */
 header.main-header {
-  position: sticky; 
+  position: sticky;
   top: 0;
   background-color: var(--bg-white);
   border-bottom: 1px solid var(--border-color);
@@ -192,7 +192,7 @@ header.main-header {
   font-weight: 700;
   color: var(--dcsa-red);
   letter-spacing: 0.6px;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -200,7 +200,7 @@ header.main-header {
   display: flex;
   gap: 18px;
   align-items: center;
-  list-style: none; 
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -268,7 +268,7 @@ header.main-header {
    5. MOBILE MENU
    ======================================================== */
 .menu-toggle {
-  display: none; 
+  display: none;
 }
 
 .menu-icon {
@@ -527,7 +527,7 @@ section {
   width: 64px;
   height: 64px;
   background: var(--dcsa-red);
-  border-radius: 50%; 
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -624,25 +624,7 @@ footer.main-footer {
   color: #64748b;
 }
 
-/* ========================================================
-   13. CUSTOM SCROLLBAR
-   ======================================================== */
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-::-webkit-scrollbar-track {
-  background: var(--bg-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--dcsa-navy);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--dcsa-red);
-}
 
 /* ========================================================
    14. GLOBAL RESPONSIVE RULES
@@ -686,7 +668,7 @@ footer.main-footer {
     border-bottom: 1px solid var(--border-color);
   }
 
-  .menu-toggle:checked ~ .nav-links {
+  .menu-toggle:checked~.nav-links {
     max-height: 450px;
   }
 }

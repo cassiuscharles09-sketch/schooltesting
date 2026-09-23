@@ -1,13 +1,6 @@
-/* ========================================================
-   DATAMEX COLLEGE OF SAINT ADELINE (DCSA)
-   About Page Stylesheet (about.css)
-   ======================================================== */
-
 @import url('style.css');
 
-/* ========================================================
-   1. ABOUT SHOWCASE STATS & MEDIA
-   ======================================================== */
+
 .showcase-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -1,13 +1,5 @@
-/* ========================================================
-   DATAMEX COLLEGE OF SAINT ADELINE (DCSA)
-   Academics Page Stylesheet (academics.css)
-   ======================================================== */
-
 @import url('style.css');
 
-/* ========================================================
-   1. HERO NOTICE CARD (ACCREDITATIONS BANNER)
-   ======================================================== */
 .hero-notice-card {
   background: var(--dcsa-navy-dark);
   border: 1px solid rgba(255, 255, 255, 0.15);
